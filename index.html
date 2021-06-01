@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="main">
+      <!-- Header -->
+      <h2>Darts Score - {{max}}</h2>
+      <!-- input score -->
+      <div id="input">
+        <div id="board"></div>
+
+        <div class="aPlayer">
+          <div id="bull">
+            <div class="red" v-on:click="vScore">25</div>
+            <div class="black" v-on:click="vScore">50</div>
+          </div>
+          <!-- Cur Player -->
+          <div v-if="isGameStarted" class="player" id="activePlayer">
+            <h3>{{activePlayer.name}}'s turn</h3>
+            <span>score: {{activePlayer.score + curScore}}</span>
+            <span>to go: {{max-activePlayer.score - curScore}}</span>
+          </div>
+          <div id="curScore">
+            <div>Current: {{curScore}}</div>
+            <button v-on:click="reset">Reset</button>
+            <button v-on:click="confirm">Turn</button>
+          </div>
+        </div>
+      </div>
+      <!-- List of Players -->
+      <div class="players">
+        <div
+          class="player"
+          v-if="isGameStarted"
+          v-for="(player, index) in inactivePlayers"
+        >
+          <h4>{{player.name}}</h4>
+          <span>score: {{player.score}}</span>
+          <span>to go: {{max-player.score}}</span>
+        </div>
+      </div>
+      <!-- Add new -->
+      <div class="newPlayer">
+        <label for="front"
+          >add player:
+          <input
+            v-on:keypress.enter="addNewPlayer"
+            v-model="newPlayer"
+            type="text"
+            id="front"
+          />
+        </label>
+        <button v-on:click="addNewPlayer">confirm</button>
+      </div>
+      <!-- Max Score -->
+      <div class='buttons'>
+        <span>game mode</span>
+        <button v-on:click="setMax">301</button>
+        <button v-on:click="setMax">501</button>
+        <button v-on:click="setMax">1001</button>
+        <button v-on:click="resetScore">reset score</button>
+      </div>
+    </main>
+    <script src="score.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

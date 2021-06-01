@@ -1,0 +1,111 @@
+* {
+  /* border: dashed 1px blueviolet; */
+  background-color: teal;
+  color: antiquewhite;
+}
+h2 {
+  text-align: center;
+  margin: 5px 0;
+}
+h3,
+h4,
+p {
+  text-align: center;
+  margin: 5px;
+}
+button {
+  background-color: darkorange;
+  margin: 0 5px;
+  border: solid antiquewhite 1px;
+  border-radius: 5px;
+}
+input {
+  max-width: 60%;
+  height: 2.5em;
+  border: solid antiquewhite 1px;
+  border-radius: 5px;
+}
+.players {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.newPlayer  {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0;
+}
+.aPlayer {
+  display: flex;
+  justify-content: space-between;
+}
+.player {
+  text-align: center;
+  border: solid antiquewhite 2px;
+  border-radius: 5px;
+  margin: 5px;
+  width: 45%;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+#main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+#board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-gap: 5px;
+  grid-auto-flow: column;
+}
+#board div {
+  font-size: 1.5em;
+  text-align: center;
+}
+#bull {
+  width: 16.5%;
+}
+#bull div {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 5px;
+}
+#activePlayer {
+  margin: auto;
+}
+#curScore {
+  text-align: center;
+}
+#curScore button {
+  margin: 5px;
+  height: 2.5em;
+}
+
+.white {
+  background-color: antiquewhite;
+  color: black;
+}
+.black {
+  background-color: black;
+}
+.green {
+  background-color: green;
+}
+.red {
+  background-color: red;
+  color: black;
+}
+.white,
+.black,
+.green,
+.red {
+  border-radius: 5px;
+}
