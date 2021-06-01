@@ -2,6 +2,7 @@ const players = [
   // {
   //   name: "mr.Placeholder",
   //   score: 420,
+  //   wins: 1,
   //   id: 0,
   // },
 ];
@@ -23,6 +24,7 @@ new Vue({
       if (this.newPlayer) {
         this.players.push({
           name: this.newPlayer,
+          wins: 0,
           score: 0,
           id: this.numberOfPl,
         });
@@ -63,6 +65,8 @@ new Vue({
     },
     checkWin: function () {
       if (this.activePlayer.score === this.max) {
+        this.activePlayer.wins++;
+        this.resetScore();
         alert(`${this.activePlayer.name} win the game!`);
       }
     },

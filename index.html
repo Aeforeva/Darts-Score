@@ -13,7 +13,8 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <title>Document</title>
+    <link rel="icon" type="image/svg" href="target.svg" />
+    <title>Darts Score</title>
   </head>
   <body>
     <main id="main">
@@ -30,7 +31,15 @@
           </div>
           <!-- Cur Player -->
           <div v-if="isGameStarted" class="player" id="activePlayer">
-            <h3>{{activePlayer.name}}'s turn</h3>
+            <h3>
+              <img
+                v-for="wins in activePlayer.wins"
+                style="height: 14px"
+                src="star.svg"
+                alt="winIcon"
+              />
+              {{activePlayer.name}}
+            </h3>
             <span>score: {{activePlayer.score + curScore}}</span>
             <span>to go: {{max-activePlayer.score - curScore}}</span>
           </div>
@@ -48,7 +57,14 @@
           v-if="isGameStarted"
           v-for="(player, index) in inactivePlayers"
         >
-          <h4>{{player.name}}</h4>
+          <h4>
+            <img
+              v-for="wins in player.wins"
+              style="height: 14px"
+              src="star.svg"
+              alt="winIcon"
+            /> {{player.name}}
+          </h4>
           <span>score: {{player.score}}</span>
           <span>to go: {{max-player.score}}</span>
         </div>
@@ -67,7 +83,7 @@
         <button v-on:click="addNewPlayer">confirm</button>
       </div>
       <!-- Max Score -->
-      <div class='buttons'>
+      <div class="buttons">
         <span>game mode</span>
         <button v-on:click="setMax">301</button>
         <button v-on:click="setMax">501</button>
