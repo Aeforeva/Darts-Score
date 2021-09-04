@@ -48,7 +48,7 @@ new Vue({
       this.overScoreCheck();
     },
     overScoreCheck: function () {
-      if (this.activePlayer.score + this.curScore > this.max - 1) {
+      if (this.activePlayer.score + this.curScore > this.max) {
         alert(`too much! switching to next player.`);
         this.curScore = 0;
         this.switchPlayer();
